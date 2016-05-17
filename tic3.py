@@ -20,10 +20,8 @@ def print1():
 
 
 def positions():
-	
-    
 	for x in range(3):
-        	board1.append([])
+		board1.append([])
 
 	board1[0].append('00')
         board1[0].append('01')
@@ -63,7 +61,6 @@ def win():
 		print("Player1 wins")
 	elif board[0]=='o' or board[1]=='o' or board[2]=='o': 
 		print("Player2 wins")		
-  
         elif board[0][0]=='x' and board[1][1]=='x' and board[2][2]=='x':
 		print("Player1 wins")
 	elif board[0][0]=='o'and board[1][1]=='o' and board[2][2]=='o':
@@ -72,19 +69,21 @@ def win():
 		print("Player1 wins")
 	elif board[0][2]=='o'and board[1][1]=='o' and board[2][0]=='o':
 		print("Player2 wins")
-  
+	return 1
+  	
 
 
 def input():
 	print('player1-x')
-	print('player2-o')
-	print("CURRENT BOARD:")
-	print1()
-	print("\n")
-	positions()
+	print('player2-o')	
 
 	i=1
 	while i!=0 and emptycheck():
+
+		print("CURRENT BOARD:")
+		print1()
+		print("\n")
+		positions()
 		if(i%2!=0):
 			print("player1 turn:")
 			a=int(raw_input("Enter the position:"))
@@ -100,9 +99,9 @@ def input():
 			game(c,b,'o')
 	
 		i=i+1
-		win() 
-	
+		win()
 
 
 
 
+input()
