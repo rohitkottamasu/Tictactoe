@@ -1,52 +1,34 @@
 #tic-tac-toe
 import sys
 board=[]
+board1 = [['00','01','02'],['10','11','12'],['20','21','22']]
+p=0
 
 def print1():
 	for i in range(3):
-		for j in range(3):
-				sys.stdout.write("%s |"%board[i][j])
-				print("\n........")
+        	for j in range(3):
+        		sys.stdout.write("%s | " % board[i][j])
+        	print "\n-------------"
 
-
-def positions():
-	board1=[]
-    
-	for x in range(3):
-        	board1.append([])
-
-	board1[0].append('00')
-        board1[0].append('01')
-	board1[0].append('02')
-	board1[1].append('10')
-	board1[1].append('11')
-	board1[1].append('12')
-        board1[2].append('13')
-        board1[2].append('14')
-        board1[2].append('15')
-for i in range(3):
-        for j in range(3):
-            sys.stdout.write(" %s |"%board1[i][j])
-        
-        print "\n-------------"
-   
+def positions():    
+	board1 = [['00','01','02'],['10','11','12'],['20','21','22']]
+	for i in range(3):
+        	for j in range(3):
+        		sys.stdout.write("%s | " % board1[i][j])
+        	print "\n-------------"
                            
-
-
-def game(i,j,c):
-	if(board[i][j]=='.'):
-		board[i][j]=c		
+def game(st,c):
+	for i in range(3):
+		for j in range(3):
+			if(board[i][j]==st):
+				board[i][j] = c	
 	
-
 def emptycheck():
-    p=0
-    for i in range(3):
-        for j in range(3):
-            if board[i][j]=='.':
-                p=1   
-    return p     
-
-
+	for i in range(3):
+		for j in range(3):
+			if (board[i][j] == str(i)+str(j)):
+				p=1
+	return p      
 
 def win():
 	if board[0]=='x' or board[1]=='x' or board[2]=='x':
@@ -63,32 +45,27 @@ def win():
 	elif board[0][2]=='o'and board[1][1]=='o' and board[2][0]=='o':
 		print("Player2 wins")
   
-
-
 def input():
 	print('player1-x')
 	print('player2-o')
-print("CURRENT BOARD:")
-print1()
-print("/n")
+
+
+
+
+print("CURRENT BOARD:-")
 positions()
 
 i=1
 while i!=0 and emptycheck():
 	if(i%2!=0):
 		print("player1 turn:")
-		a=int(raw_input("Enter the position"))
-		b=a%10
-		c=b%10
-
-		game(c,b,'x')
+		a=raw_input("Enter the position")
+		game(a,'x')
 		
 	else:
 		print("player2 turn:")
-		a=int(raw_input("Enter the position"))
-		b=a%10
-		c=b%10
-		game(c,b,'o')
+		a=raw_input("Enter the position")
+		game(a,'o')
 
 i=i+1
 win() 
